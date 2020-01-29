@@ -67,7 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
         recognizer.recognizeOnceAsync(
             function (result) {
                 startRecognizeOnceAsyncButton.disabled = false;
-                window.console.log(result);
+                //window.console.log(result);
+                $("#speechIdentificationLog").append("<p>" + JSON.stringify(result) + "<p>");   
                 phraseDiv.innerHTML += result.text;
                 utterance.value = result.text;
                 utterance.dispatchEvent(new Event('change'));                
@@ -78,7 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
             function (err) {
                 startRecognizeOnceAsyncButton.disabled = false;
                 phraseDiv.innerHTML += err;
-                window.console.log(err);
+                //window.console.log(err);
+                $("#speechIdentificationLog").append("<p>" + JSON.stringify(err) + "<p>");   
 
                 recognizer.close();
                 recognizer = undefined;
