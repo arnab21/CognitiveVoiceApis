@@ -17,14 +17,15 @@
     <li>
         Paste them in here and click "go":<br />
         <form method="GET" action="@Url.Action("SmartApisDemo", "Home")">
-            <input type="text" name="endpoint" style="width:300px" placeholder="endpoint">https://nextgenvoiceloginapi.cognitiveservices.azure.com/spid/v1.0<br />
-            <input type="text" name="key" style="width:300px" placeholder="key"><br />
-            <input type="text" name="subscriptionKey" style="width:300px" placeholder="subscriptionKey"><br />
-            <input type="text" name="serviceRegion" style="width:300px" placeholder="YourServiceRegion"><br />
+            <input type="text" class="form-control" name="endpoint" style="width:300px" placeholder="Cognitive Services Speaker recognition endpoint">https://nextgenvoiceloginapi.cognitiveservices.azure.com/spid/v1.0<br />
+            <input type="text" class="form-control" name="key" style="width:300px" placeholder="Cognitive Services Speaker recognition endpoint key"><br />
             <br />
-            <input type="text" name="luisAppid" style="width:300px" placeholder="LUIS App ID"><br />
-            <input type="text" name="luisPredictionResource" style="width:300px" placeholder="LUIS Prediction Resource">nextgenapiintentrecognition<br />
-            <input type="text" name="luisEndpointKey" style="width:300px" placeholder="LUIS Endpoint Key"><br />
+            <input type="text" class="form-control" name="serviceRegion" style="width:300px" placeholder="Cognitive Services Speech recognition ServiceRegion"><br />
+            <input type="text" class="form-control" name="subscriptionKey" style="width:300px" placeholder="Cognitive Services Speech recognition SubscriptionKey"><br />
+            <br />
+            <input type="text" class="form-control" name="luisAppid" style="width:300px" placeholder="LUIS App ID"><br />
+            <input type="text" class="form-control" name="luisPredictionResource" style="width:300px" placeholder="LUIS Prediction Resource">nextgenapiintentrecognition<br />
+            <input type="text" class="form-control" name="luisEndpointKey" style="width:300px" placeholder="LUIS Endpoint Key"><br />
             <br />
             <input type="submit" class="btn btn-primary" value="go">
         </form>
