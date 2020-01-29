@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = " Smart APIs: Biometric login and Voice interface";
+}
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+
+    Want to try out using your own personal voice from your own personal mouth to create a voiceprint using AI?!
+    Sure you do. And here's where you can try that out.
+
+<h2> No API key yet?</h2>
+
+    Go and get your cognitive services <strong>API key</strong> at <a href="https://portal.azure.com">portal.azure.com</a> and your cognitive services <strong>endpoint</strong>.
+
+<h2>Already got an API key and Endpoint?</h2>
+
+<ol>
+    <li>
+        Paste them in here and click "go":<br />
+        <form method="GET" action="@Url.Action("SmartApisDemo", "Home")">
+            <input type="text" name="endpoint" style="width:300px" placeholder="endpoint">https://nextgenvoiceloginapi.cognitiveservices.azure.com/spid/v1.0<br />
+            <input type="text" name="key" style="width:300px" placeholder="key"><br />
+            <input type="text" name="subscriptionKey" style="width:300px" placeholder="subscriptionKey"><br />
+            <input type="text" name="serviceRegion" style="width:300px" placeholder="YourServiceRegion"><br />
+            <br />
+            <input type="text" name="luisAppid" style="width:300px" placeholder="LUIS App ID"><br />
+            <input type="text" name="luisPredictionResource" style="width:300px" placeholder="LUIS Prediction Resource">nextgenapiintentrecognition<br />
+            <input type="text" name="luisEndpointKey" style="width:300px" placeholder="LUIS Endpoint Key"><br />
+            <br />
+            <input type="submit" class="btn btn-primary" value="go">
+        </form>
+    </li>
+</ol>
+
+<!--
+<footer>
+    Find the repo for this over on github: <a href="https://github.com/rposbo/speaker-recognition-api">https://github.com/rposbo/speaker-recognition-api</a>
+    <br />
+    Made with coffee (and love) by <a href="https://twitter.com/rposbo">rposbo</a>
+</footer>
+-->

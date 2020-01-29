@@ -1,0 +1,135 @@
+{
+  "luis_schema_version": "4.0.0",
+  "versionId": "0.1",
+  "name": "Intelligent Api  Router App",
+  "desc": "Api selector",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "AccountBalanceEnquiry"
+    },
+    {
+      "name": "None"
+    }
+  ],
+  "entities": [],
+  "composites": [],
+  "closedLists": [],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [
+    {
+      "name": "number",
+      "roles": []
+    },
+    {
+      "name": "personName",
+      "roles": []
+    }
+  ],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [
+    {
+      "pattern": "please return the account details for account {number}",
+      "intent": "AccountBalanceEnquiry"
+    },
+    {
+      "pattern": "get the current balance for account number {number}",
+      "intent": "AccountBalanceEnquiry"
+    },
+    {
+      "pattern": "please return the account details for {personName}'s account",
+      "intent": "AccountBalanceEnquiry"
+    },
+    {
+      "pattern": "please return the account balance for {personName}s account",
+      "intent": "AccountBalanceEnquiry"
+    },
+    {
+      "pattern": "get the account balance for {personName}",
+      "intent": "AccountBalanceEnquiry"
+    },
+    {
+      "pattern": "what is the current balance for {personName}",
+      "intent": "AccountBalanceEnquiry"
+    },
+    {
+      "pattern": "what is the current balance in account {number}",
+      "intent": "AccountBalanceEnquiry"
+    },
+    {
+      "pattern": "please return the account details for {personName}",
+      "intent": "AccountBalanceEnquiry"
+    }
+  ],
+  "utterances": [
+    {
+      "text": "hi please return the balance for account 1234",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "hi please return the current balance for account holder simon",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "please return the account balance for account 4567",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "please return the account balance for account 752543",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "please return the balance for account holder subhash",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "please return the current balance for account 975678",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "please return the current balance for account holder lisa",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "what is the account details for account holder arnab",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "what is the current balance for account 8765",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "what is the current balance for account holder chandra",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "what is the current balance for account holder nick",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "what is the current balance for account holder rob",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    },
+    {
+      "text": "what is the current balance for account number 5466866",
+      "intent": "AccountBalanceEnquiry",
+      "entities": []
+    }
+  ],
+  "settings": []
+}

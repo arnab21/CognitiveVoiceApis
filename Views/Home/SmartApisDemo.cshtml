@@ -1,0 +1,187 @@
+﻿@{
+    ViewData["Title"] = " Smart Apis Demo";
+}
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+<style>
+    select {
+        width: 83%;
+    }
+
+    .clearfix {
+        clear: both;
+    }
+
+    .rate-value, .pitch-value {
+        float: right;
+        width: 5%;
+        line-height: 1.5;
+    }
+
+    #rate, #pitch {
+        float: right;
+        width: 81%;
+    }
+
+    .controls {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+        .controls button {
+            padding: 10px;
+        }
+</style>
+
+<!-- Azure Cognitive Services: Speaker Identification -->
+<div id="speakerIdContent" style="display:block">
+    <h2 style="font-weight:500;">Biometric Voice Login: Azure Cognitive Services- Speaker Identification</h2>
+    <ol>
+        <li>Click "Identify Voice1" and speak for 10 secs. You can read the sample text shown in "Diagnostic messages"</li>
+        <li>HOPEFULLY the correct person will be identified!</li>
+    </ol>
+    <!--<button class="btn btn-primary" onclick="enrollNewProfile();">Train new user voice profile</button> -->
+    <button class="btn btn-success" onclick="startListeningForIdentification();">Identify voice</button><br />
+    <div>
+        <label>Speaker Name: </label>
+        <input id="speakerName" type="text" name="html" size="40" />
+        <label>Speaker ProfileId: </label>
+        <input id="speakerId" type="text" name="html" size="40" />
+    </div>
+    <hr>
+    <!--
+    <button class="btn btn-danger" onclick="BurnItAll('identification');">Clear Identification profiles</button>
+    -->
+    <hr>
+</div>
+
+<!-- Azure Cognitive Services: Speech Recognition -->
+<div id="speechRecognitionContent" style="display:none">
+    <h2 style="font-weight:500;">Voice command: Azure Cognitive Services- Speech Recognition</h2>
+    <div id="speechRecognitionWarning">
+        <h1 style="font-weight:500;">Speech Recognition Speech SDK not found (microsoft.cognitiveservices.speech.sdk.bundle.js missing).</h1>
+    </div>
+    <table width="100%">
+        <tr>
+            <td align="left" valign="top">
+                <p>Click "Start Recognition" button and ask your question. Some sample questions you can ask: </p>
+                <ol>
+                    <!--<li>"What is the current balance for account holder Nick?"</li>-->
+                    <li>"Hi. What is the current balance for my account?"</li>
+                    <li>"Please return the account details for account number 123456?"</li>
+                    <li>"Get the account details for account number 24680?"</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top"><button class="btn btn-warning" id="startRecognizeOnceAsyncButton">Start recognition</button></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">Results: </td>
+            <!--td><textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px"></textarea></td>-->
+            <td><div id="phraseDiv"></div></td>
+        </tr>
+    </table>
+    <hr>
+</div>
+
+<!-- Azure Cognitive Services: Natural Language Understanding -->
+<div id="luisContent" style="display:block">
+    <h2 style="font-weight:500;">Command Interpretation: Azure Cognitive Services- Natural Language Understanding</h2>
+    <p>Enter you account equiry query in the textbox and click "Decipher Intent" button</p>
+    <textarea id="utterance" style="display: inline-block;width:500px;height:200px">Get the account balance for account holder Nick for account number 24680</textarea><br />
+    <button class="btn btn-primary" id="luisGetIntentButton">Decipher Intent</button>
+    <br />
+    <div>
+        <label>Top Intent</label>
+        <input id="topIntent" type="text" name="html" size="40" />
+    </div>
+    <div>
+        <label>Recognized Entities</label>
+        <input id="recognizedAccountNumber" type="text" name="html" size="40" />
+        <input id="recognizedPerson" type="text" name="html" size="40"  />
+    </div>
+    <hr>
+</div>
+
+
+<!-- Backend Api Invocation : Text to speech response -->
+<div id="speakerIdContent" style="display:block">
+    <h2 style="font-weight:500;">Backend Api Invocation: Text to speech response</h2>
+    <p>Click "Invoke Business Api" to fetch account details and then press "Play Api Response" button to hear it. Change voices using the dropdown menu.</p>
+    <div id="userAuthAlertPlaceholder">
+    </div>
+    <button id="invokeBackendApiButton" class="btn btn-primary">Invoke Business Api</button><br />
+    <div id="apiResponse">
+    </div>
+    <textarea id="apiResponseToSpeech" style="display: inline-block;width:500px;height:200px">Account number 1234 has cash balance of $1200 and total positions balance of $10500</textarea><br />
+    <div>
+        <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate">
+        <div class="rate-value">1</div>
+        <div class="clearfix"></div>
+    </div>
+    <div>
+        <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1" id="pitch">
+        <div class="pitch-value">1</div>
+        <div class="clearfix"></div>
+    </div>
+    <select id="voiceSelector">
+    </select>
+    <div class="controls">
+        <button id="playApiResponse" class="btn btn-warning">Play Api Response</button>
+    </div>
+    <hr>
+</div>
+
+<!-- Diagnostic console -->
+<div id="DiagnosticContent" style="display:block">
+    <h2 style="font-weight:500;">Diagnostic console</h2>
+    <pre id="speakerIdentificationLog"></pre>
+    <hr>
+    <pre id="luisPrediction">
+    </pre>
+    <hr>
+    <pre id="backendApiResponse">
+    </pre>
+</div>
+
+<!-- Speech SDK reference sdk. -->
+<script src="~/js/microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+<script src="~/js/recorder.js"></script>
+
+
+<!-- Page behavior scripts -->
+<script src="~/js/speaker-recognition-api-demo-core-smartapi.js"></script>
+<script src="~/js/speech-recognition-smartapi.js"></script>
+<script src="~/js/languageUnderstanding-smartapi.js"></script>
+<script src="~/js/apiInvoke-speechResponse-smartapi.js"></script>
+
+<!-- Speaker Recognition Voice Recorder  -->
+<script>
+    var recorder;
+    var audio_context;
+
+    function onMediaSuccess(stream, callback, secondsOfAudio) {
+        audio_context = audio_context || new window.AudioContext;
+        var input = audio_context.createMediaStreamSource(stream);
+        recorder = new Recorder(input);
+        recorder.record();
+
+        setTimeout(() => { StopListening(callback); }, secondsOfAudio * 1000);
+    }
+
+    function onMediaError(e) {
+        console.error('media error', e);
+    }
+
+    function StopListening(callback) {
+        console.log('...working...');
+        recorder && recorder.stop();
+        recorder.exportWAV(function (blob) {
+            callback(blob);
+        });
+        recorder.clear();
+    }
+
+</script>

@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = " Speaker Recognition Demo";
+}
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+<button class="btn btn-primary"  onclick="enrollNewProfile();">Train new user voice profile</button>
+<button class="btn btn-success" onclick="startListeningForIdentification();">Identify voice</button>
+
+<!--
+<hr>
+<button onclick="getVerificationPhrases();">List Verification phrases</button>
+<button onclick="enrollNewVerificationProfile();">Create Verification Profile</button>
+<button onclick="startListeningForVerification();">Verify</button>
+<hr>
+-->
+<hr>
+<button class="btn btn-danger" onclick="BurnItAll('identification');">Clear Identification profiles</button>
+<!--
+<button class="btn btn-danger" onclick="BurnItAll('verification');">Clear Verification profiles</button>
+-->
+<hr>
+<pre id="log"></pre>
+<script src="~/js/speaker-recognition-api-demo-core.js"></script>
+<script src="~/js/recorder.js"></script>
+<script>
+
+    var recorder;
+    var audio_context;
+
+    function onMediaSuccess(stream, callback, secondsOfAudio) {
+        audio_context = audio_context || new window.AudioContext;
+        var input = audio_context.createMediaStreamSource(stream);
+        recorder = new Recorder(input);
+        recorder.record();
+
+        setTimeout(() => { StopListening(callback); }, secondsOfAudio * 1000);
+    }
+
+    function onMediaError(e) {
+        console.error('media error', e);
+    }
+
+    function StopListening(callback) {
+        console.log('...working...');
+        recorder && recorder.stop();
+        recorder.exportWAV(function (blob) {
+            callback(blob);
+        });
+        recorder.clear();
+    }
+
+</script>

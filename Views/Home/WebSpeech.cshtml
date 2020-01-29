@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Web Speech Api Demo";
+}
+
+
+<h1 class="display-4">Speech Synthesizer: Text to Speech</h1>
+
+<style>
+    .txt, select, form > div {
+        display: block;
+        margin: 0 auto;
+        font-family: sans-serif;
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    .txt {
+        width: 80%;
+    }
+
+    select {
+        width: 83%;
+    }
+
+    form > div {
+        width: 81%;
+    }
+
+    .txt, form > div {
+        margin-bottom: 10px;
+        overflow: auto;
+    }
+
+    .clearfix {
+        clear: both;
+    }
+
+    label {
+        float: left;
+        width: 10%;
+        line-height: 1.5;
+    }
+
+    .rate-value, .pitch-value {
+        float: right;
+        width: 5%;
+        line-height: 1.5;
+    }
+
+    #rate, #pitch {
+        float: right;
+        width: 81%;
+    }
+
+    .controls {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+        .controls button {
+            padding: 10px;
+        }
+</style>
+
+
+<p>Enter some text in the input below and press return  or the "play" button to hear it. change voices using the dropdown menu.</p>
+<form>
+    <input type="text" class="txt">
+    <div>
+        <label for="rate">Rate</label><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate">
+        <div class="rate-value">1</div>
+        <div class="clearfix"></div>
+    </div>
+    <div>
+        <label for="pitch">Pitch</label><input type="range" min="0" max="2" value="1" step="0.1" id="pitch">
+        <div class="pitch-value">1</div>
+        <div class="clearfix"></div>
+    </div>
+    <select id="voiceSelector">
+    </select>
+    <div class="controls">
+        <button id="play" type="submit">Play</button>
+    </div>
+</form>
+
+<div>
+    <h1 class="display-4">Speech Recognition: Speech to Text</h1>
+    <p class="hints"></p>
+    <div>
+        <p class="output"><em>...Speech recognition diagnostic messages</em></p>
+    </div>
+    <div>
+        <textarea id="phraseDiv" style="display: inline-block;width:500px;height:200px"></textarea>
+        <br>
+        <button id="startRecognizeOnceAsyncButton">Start recognition</button>
+    </div>
+</div>
+
+<script src="~/js/speechSynthesizer.js"></script>
+<script src="~/js/speechRecognition.js"></script>
+

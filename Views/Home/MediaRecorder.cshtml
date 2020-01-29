@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "MediaRecorder Api example";
+}
+<h1 class="display-4">@ViewData["Title"]</h1>
+
+<style>
+    button {
+        margin: 10px 5px;
+    }
+
+    li {
+        margin: 10px;
+    }
+
+    #btns {
+        display: none;
+    }
+</style>
+<div class="text-center">
+    <p> For now it is supported only in Firefox(v25+) and Chrome(v47+)</p>
+    <div id='gUMArea'>
+        <div>
+            Record:
+            <input type="radio" name="media" value="video" id='mediaVideo'>Video
+            <input type="radio" name="media" value="audio" checked id='mediaAudio'>Audio
+        </div>
+        <button class="btn btn-primary" id='gUMbtn'>Request Stream</button>
+    </div>
+    <div id='btns'>
+        <button class="btn btn-danger" id='start'>Record</button>
+        <button class="btn btn-success" id='stop'>Stop</button>
+    </div>
+    <div>
+        <ul class="list-unstyled" id='ul'></ul>
+    </div>
+
+</div>
+<script src="~/js/mediaRecorder.js"></script>

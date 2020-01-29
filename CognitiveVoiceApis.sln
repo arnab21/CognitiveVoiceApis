@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextGenApis", "NextGenApis.csproj", "{C28D3ED0-7859-4A09-B81C-F96CCEC60F69}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C28D3ED0-7859-4A09-B81C-F96CCEC60F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28D3ED0-7859-4A09-B81C-F96CCEC60F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28D3ED0-7859-4A09-B81C-F96CCEC60F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28D3ED0-7859-4A09-B81C-F96CCEC60F69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {654E157D-EB32-468B-AFD7-7D7EF087F3CA}
+	EndGlobalSection
+EndGlobal
